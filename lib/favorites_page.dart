@@ -25,7 +25,7 @@ class FavoritesPage extends StatelessWidget {
         for (var name in appState.favorites)
           ListTile(
             leading: const Icon(Icons.favorite),
-            title: Text(name.asLowerCase),
+            title: Text(name.completeName),
             trailing: IconButton(
                 onPressed: () => {
                       appState.deleteFavorite(name),

@@ -4,6 +4,7 @@ import 'dart:math';
 class Name {
   String fisrtName;
   String lastName;
+  String completeName = '';
 
   final String _join = ' the ';
   final List<String> _sufix = ['rer', 'ist'];
@@ -11,9 +12,9 @@ class Name {
   Name({
     required this.fisrtName,
     required this.lastName,
-  });
-
-  String get asLowerCase => generateName().toLowerCase();
+  }) {
+    completeName = generateName();
+  }
 
   String generateName() {
     String completeName = fisrtName;
