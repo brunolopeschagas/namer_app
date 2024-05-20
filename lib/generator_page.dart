@@ -9,10 +9,10 @@ class GeneratorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
-    var pair = appState.current;
+    var name = appState.currentName;
 
     IconData icon;
-    if (appState.favorites.contains(pair)) {
+    if (appState.favorites.contains(name)) {
       icon = Icons.favorite;
     } else {
       icon = Icons.favorite_border;
@@ -22,7 +22,7 @@ class GeneratorPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          BigCard(pair: pair),
+          BigCard(name: name),
           const SizedBox(height: 10),
           Row(
             mainAxisSize: MainAxisSize.min,

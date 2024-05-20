@@ -1,27 +1,29 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:namer_app/model/names.dart';
 
 class MyAppState extends ChangeNotifier {
-  var current = WordPair.random();
+  var currentName = Name(fisrtName: '', lastName: '');
 
   void getNext() {
-    current = WordPair.random();
+    var current = WordPair.random();
+    currentName = Name(fisrtName: current.first, lastName: current.second);
     notifyListeners();
   }
 
-  var favorites = <WordPair>[];
+  var favorites = <Name>[];
 
   void toggleFavorite() {
-    if (favorites.contains(current)) {
-      favorites.remove(current);
+    if (favorites.contains(currentName)) {
+      favorites.remove(currentName);
     } else {
-      favorites.add(current);
+      favorites.add(currentName);
     }
     notifyListeners();
   }
 
-  deleteFavorite(WordPair pair) {
-    favorites.remove(pair);
+  deleteFavorite(Name name) {
+    favorites.remove(name);
     notifyListeners();
   }
 }

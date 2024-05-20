@@ -22,13 +22,13 @@ class FavoritesPage extends StatelessWidget {
           child: Text('You have '
               '${appState.favorites.length} favorites:'),
         ),
-        for (var pair in appState.favorites)
+        for (var name in appState.favorites)
           ListTile(
             leading: const Icon(Icons.favorite),
-            title: Text(pair.asLowerCase),
+            title: Text(name.asLowerCase),
             trailing: IconButton(
                 onPressed: () => {
-                      appState.deleteFavorite(pair),
+                      appState.deleteFavorite(name),
                     },
                 icon: const Icon(Icons.delete)),
           ),
