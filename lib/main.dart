@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:namer_app/app_state.dart';
-import 'package:namer_app/favorites_page.dart';
-import 'package:namer_app/generator_page.dart';
+import 'package:namer_app/pages/all_page.dart';
+import 'package:namer_app/pages/favorites_page.dart';
+import 'package:namer_app/pages/generator_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -47,6 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
         page = const GeneratorPage();
       case 1:
         page = const FavoritesPage();
+      case 2:
+        page = const AllNamesPage();
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -70,6 +73,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   NavigationRailDestination(
                     icon: Icon(favoritesIcon),
                     label: const Text('Favorites'),
+                  ),
+                  const NavigationRailDestination(
+                    icon: Icon(Icons.all_inbox_rounded),
+                    label: Text('AllNames'),
                   ),
                 ],
                 selectedIndex: selectedIndex,

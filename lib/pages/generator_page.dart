@@ -10,6 +10,7 @@ class GeneratorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
     var name = appState.currentName;
+    appState.getNext();
 
     IconData icon;
     if (appState.favorites.contains(name)) {

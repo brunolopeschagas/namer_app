@@ -7,7 +7,8 @@ class Name {
   String completeName = '';
 
   final String _join = ' the ';
-  final List<String> _sufix = ['rer', 'ist', 'ror'];
+  final List<String> _sufixConsoant = ['er', 'ist', 'or'];
+  final List<String> _sufixVogal = ['rer', 'ist', 'ror'];
 
   Name({
     required this.fisrtName,
@@ -22,10 +23,21 @@ class Name {
     int randonSufixIndex = Random().nextInt(3);
     if (randonjoinIndex == 1) {
       completeName += _join;
-      lastName += _sufix[randonSufixIndex];
+      if (isFinishInVogal(lastName)) {
+        lastName += _sufixConsoant[randonSufixIndex];
+      } else {
+        lastName += _sufixVogal[randonSufixIndex];
+      }
     }
 
     completeName += lastName;
     return completeName;
+  }
+
+  bool isFinishInVogal(String text) {
+    if (text.substring(text.length - 1).contains(RegExp('\b[aeiyou]+\b'))) {
+      return true;
+    }
+    return false;
   }
 }
