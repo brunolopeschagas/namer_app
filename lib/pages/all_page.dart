@@ -1,65 +1,44 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:namer_app/model/names.dart';
-import 'package:namer_app/service/names_service.dart';
+import 'package:namer_app/service/names.dart';
 
-class AllNamesPage extends StatefulWidget {
-  const AllNamesPage({super.key});
+class AllNamesPage extends StatelessWidget {
+  final Names names;
 
-  @override
-  State<AllNamesPage> createState() => _AllNamesPageState();
-}
+  const AllNamesPage({super.key, required this.names});
 
-class _AllNamesPageState extends State<AllNamesPage> {
-  List<String> litems = [];
-  final TextEditingController eCtrl = TextEditingController();
+  Future<List<Name>> _getAllNames() async {
+    return names.getAll();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TextField(
-          controller: eCtrl,
-          onSubmitted: (text) {
-            litems.add(text);
-            eCtrl.clear();
-            setState(() {});
-          },
-        ),
-        buildFutureBuilder(),
-      ],
-    );
-  }
-
-  Future<List<Name>> _loadData() async {
-    return NamesServiceInMemory().getAll();
-  }
-
-  buildFutureBuilder() {
+    final Future<List<Name>> namesFuture = _getAllNames();
     return FutureBuilder<List<Name>>(
-        future: _loadData(),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.none:
-            case ConnectionState.waiting:
-              return const Center(child: Text("Carregando..."));
-            default:
-              if (snapshot.hasError) {
-                return const Center(
-                  child: Text("Erro ao carregar..."),
-                );
-              } else {
-                return ListView.builder(
-                  itemCount: snapshot.data?.length,
-                  itemBuilder: (context, index) {
-                    Name name = snapshot.data![index];
-                    return ListTile(
-                      leading: const Icon(Icons.favorite),
-                      title: Text(name.completeName),
-                    );
-                  },
-                );
-              }
-          }
-        });
+      future: namesFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return const Center(child: Text('Erro ao carregar os dados.'));
+        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+          return const Center(child: Text('Nenhum dado disponível.'));
+        }
+
+        // Construindo o ListView com os dados da classe Name
+        return ListView.builder(
+          itemCount: snapshot.data!.length,
+          itemBuilder: (context, index) {
+            final name = snapshot.data![index];
+            return ListTile(
+              title: Text(name.completeName),
+              subtitle: Text('${name.firstName} ${name.lastName}'),
+            );
+          },
+        );
+      },
+    );
   }
 }

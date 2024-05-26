@@ -2,7 +2,7 @@
 import 'dart:math';
 
 class Name {
-  String fisrtName;
+  String firstName;
   String lastName;
   String completeName = '';
 
@@ -11,14 +11,14 @@ class Name {
   final List<String> _sufixVogal = ['rer', 'ist', 'ror'];
 
   Name({
-    required this.fisrtName,
+    required this.firstName,
     required this.lastName,
   }) {
     completeName = generateName();
   }
 
   String generateName() {
-    String completeName = fisrtName;
+    String completeName = firstName;
     int randonjoinIndex = Random().nextInt(2);
     int randonSufixIndex = Random().nextInt(3);
     if (randonjoinIndex == 1) {

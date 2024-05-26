@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:namer_app/model/names.dart';
 
 class MyAppState extends ChangeNotifier {
-  var currentName = Name(fisrtName: '', lastName: '');
+  var currentName = Name(firstName: '', lastName: '');
 
   void getNext() {
     var current = WordPair.random();
-    currentName = Name(fisrtName: current.first, lastName: current.second);
+    currentName = Name(firstName: current.first, lastName: current.second);
     notifyListeners();
   }
 

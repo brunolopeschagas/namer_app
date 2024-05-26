@@ -25,7 +25,7 @@ class BigCard extends StatelessWidget {
         child: Text(
           name.completeName,
           style: style,
-          semanticsLabel: "${name.fisrtName} ${name.lastName}",
+          semanticsLabel: "${name.firstName} ${name.lastName}",
         ),
       ),
     );
