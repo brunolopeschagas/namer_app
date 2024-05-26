@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = const GeneratorPage();
+        page = GeneratorPage(names: NamesServiceInMemory());
       case 1:
         page = const FavoritesPage();
       case 2:
@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
         throw UnimplementedError('no widget for $selectedIndex');
     }
 
-    if (appState.favorites.isEmpty == false) {
+    if (appState.favoritesNames.isEmpty == false) {
       favoritesIcon = Icons.favorite;
     }
 

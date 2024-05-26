@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:namer_app/app_state.dart';
 import 'package:namer_app/big_card.dart';
+import 'package:namer_app/service/names.dart';
 import 'package:provider/provider.dart';
 
 class GeneratorPage extends StatelessWidget {
-  const GeneratorPage({super.key});
+  final Names names;
+  const GeneratorPage({super.key, required this.names});
 
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
     var name = appState.currentName;
-    appState.getNext();
 
     IconData icon;
-    if (appState.favorites.contains(name)) {
+    if (appState.favoritesNames.contains(name)) {
       icon = Icons.favorite;
     } else {
       icon = Icons.favorite_border;
     }
+
+    names.save(name);
 
     return Center(
       child: Column(

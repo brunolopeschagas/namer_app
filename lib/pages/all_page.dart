@@ -27,12 +27,12 @@ class AllNamesPage extends StatelessWidget {
           return const Center(child: Text('Nenhum dado disponível.'));
         }
 
-        // Construindo o ListView com os dados da classe Name
         return ListView.builder(
           itemCount: snapshot.data!.length,
           itemBuilder: (context, index) {
             final name = snapshot.data![index];
             return ListTile(
+              trailing: const Icon(Icons.accessibility_sharp),
               title: Text(name.completeName),
               subtitle: Text('${name.firstName} ${name.lastName}'),
             );

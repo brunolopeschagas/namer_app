@@ -4,6 +4,7 @@ import 'package:namer_app/model/names.dart';
 
 class MyAppState extends ChangeNotifier {
   var currentName = Name(firstName: '', lastName: '');
+  var favoritesNames = <Name>[];
 
   void getNext() {
     var current = WordPair.random();
@@ -11,19 +12,17 @@ class MyAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  var favorites = <Name>[];
-
   void toggleFavorite() {
-    if (favorites.contains(currentName)) {
-      favorites.remove(currentName);
+    if (favoritesNames.contains(currentName)) {
+      favoritesNames.remove(currentName);
     } else {
-      favorites.add(currentName);
+      favoritesNames.add(currentName);
     }
     notifyListeners();
   }
 
-  deleteFavorite(Name name) {
-    favorites.remove(name);
+  void deleteFavorite(Name name) {
+    favoritesNames.remove(name);
     notifyListeners();
   }
 }

@@ -2,13 +2,7 @@ import 'package:namer_app/model/names.dart';
 import 'package:namer_app/service/names.dart';
 
 class NamesServiceInMemory implements Names {
-  List<Name> names = [
-    Name(firstName: 'chair', lastName: 'blasfemous'),
-    Name(firstName: 'stonk', lastName: 'wise'),
-    Name(firstName: 'stone', lastName: 'gold'),
-    Name(firstName: 'parrot', lastName: 'blue'),
-    Name(firstName: 'carrot', lastName: 'yellows'),
-  ];
+  List<Name> names = [];
 
   @override
   List<Name> getAll() {
