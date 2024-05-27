@@ -73,11 +73,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   NavigationRailDestination(
                     icon: Icon(favoritesIcon),
-                    label: const Text('Favorites'),
+                    label: const Text('Favoritos'),
                   ),
                   const NavigationRailDestination(
                     icon: Icon(Icons.all_inbox_rounded),
-                    label: Text('AllNames'),
+                    label: Text('Todos'),
                   ),
                 ],
                 selectedIndex: selectedIndex,

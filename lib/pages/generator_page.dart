@@ -36,14 +36,14 @@ class GeneratorPage extends StatelessWidget {
                   appState.toggleFavorite();
                 },
                 icon: Icon(icon),
-                label: const Text('Like'),
+                label: const Text('Favoritar'),
               ),
               const SizedBox(width: 10),
               ElevatedButton(
                 onPressed: () {
                   appState.getNext();
                 },
-                child: const Text('Next'),
+                child: const Text('Gerar nome'),
               ),
             ],
           ),
