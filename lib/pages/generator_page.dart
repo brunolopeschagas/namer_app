@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:namer_app/app_state.dart';
-import 'package:namer_app/big_card.dart';
+import 'package:namer_app/shared/app_state.dart';
+import 'package:namer_app/shared/components/big_card.dart';
 import 'package:namer_app/pages/components/get_next_name_button.dart';
 import 'package:namer_app/pages/components/toggle_favorite_button.dart';
 import 'package:namer_app/service/names.dart';
